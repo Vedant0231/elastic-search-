@@ -4,7 +4,6 @@ This README would normally document whatever steps are necessary to get your app
 ## Postman collection is also attack with this repo, you can simply import postman collection json file ##
 
 
-
 ### What is this repository for? ###
 
 In this project we setup elastic search with the help of docker compose file and create curd operation
@@ -16,7 +15,26 @@ In this project we setup elastic search with the help of docker compose file and
   * Python
   * FastAPI
   * Postman
-     
+
+## What is Docker compose? ##
+
+Docker Compose is a tool for defining and running multi-container Docker applications. It allows you to define a multi-container Docker application using a YAML file to configure the application's services, networks, and volumes. With Docker Compose, you can start and run your entire application stack with a single command.     
+
+
+## What is Elastic search ? ##
+
+Elasticsearch is a distributed, open-source search and analytics engine built on top of Apache Lucene. It is designed for horizontal scalability, meaning that it can easily scale out to handle large amounts of data and queries across multiple nodes or servers. Elasticsearch is part of the Elastic Stack, which also includes Logstash for log data collection and Kibana for data visualization.
+
+
+## What is FastAPI? ##
+
+FastAPI is a modern, fast (high-performance), web framework for building APIs with Python 3.7+ based on standard Python type hints. It was created by Sebastián Ramírez and is designed to be easy to use, fast to develop with, and to produce fast, efficient code.
+
+
+## What is Postman? ##
+
+Postman is a popular collaboration platform for API development. It provides a user-friendly interface that allows developers to create, test, and manage APIs more efficiently.
+
 
 ### How do I get set up? ###
 
