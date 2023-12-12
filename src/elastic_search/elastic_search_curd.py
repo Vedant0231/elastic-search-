@@ -1,8 +1,22 @@
-from src.elastic_search.elastic_search_connection import es
 import uuid
 from datetime import datetime
+from src.config import Config
+from src.elastic_search.elastic_search_connection import es
+from src.elastic_search.mapping import country_mapping
 
-index_name = "test"
+
+def create_index():
+    """
+    Create index
+    """
+    try:
+        es.indices.create(Config.INDEX_NAME)  # create index
+        es.indices.put_mapping(
+            index=Config.INDEX_NAME, body=country_mapping
+        )  # update index with mapping
+        return "data added", 201
+    except Exception as e:
+        return str(e), 500
 
 
 def post_data(request):
@@ -21,8 +35,8 @@ def post_data(request):
             "country_bio": request.bio,
         }
 
-        es.index(index=index_name, body=doc)
-        es.indices.refresh(index=index_name)
+        es.index(index=Config.INDEX_NAME, body=doc)
+        es.indices.refresh(index=Config.INDEX_NAME)
 
         return "data added", 201
     except Exception as e:
@@ -35,7 +49,7 @@ def get_all_data():
     """
     try:
         result = es.search(
-            index=index_name,
+            index=Config.INDEX_NAME,
             body={
                 "query": {"bool": {"must_not": {"term": {"is_delete": True}}}},
                 "sort": [{"created_on": {"order": "desc"}}],
@@ -65,7 +79,7 @@ def get_by_name(city_name):
             }
         }
 
-        result = es.search(index=index_name, body=query)
+        result = es.search(index=Config.INDEX_NAME, body=query)
 
         hits = result["hits"]["hits"]
         data = [{"id": hit["_id"], **hit["_source"]} for hit in hits]
@@ -81,10 +95,12 @@ def delete_data(id):
     delete data elastic search
     """
     try:
-        result = es.search(index=index_name, body={"query": {"match": {"id": id}}})
+        result = es.search(
+            index=Config.INDEX_NAME, body={"query": {"match": {"id": id}}}
+        )
         doc_id = result["hits"]["hits"][0]["_id"]
         es.update(
-            index=index_name,
+            index=Config.INDEX_NAME,
             id=doc_id,
             body={"doc": {"is_delete": True, "is_active": False}},
         )

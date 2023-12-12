@@ -4,7 +4,7 @@ This README would normally document whatever steps are necessary to get your app
 
 ### What is this repository for? ###
 
-In this project we setup elastic search with the help of docker compose file and crete curd opration
+In this project we setup elastic search with the help of docker compose file and crete curd operation
 
 ### Things used in this project ###
 
@@ -21,6 +21,9 @@ In this project we setup elastic search with the help of docker compose file and
   * docker-compose up
   * pip install -r requirements.txt
   * python3 main.py
+  * first hit welcome api to check server is up or not
+  * then hit create index api to create index (you need to give index name in .env file, example is already there in .env_example file)
+  * then you can create data in elastic search and get data or delete data or search data
 
 
 ## Postman collection is also attack with this repo, you can simply import postman collection json file ##

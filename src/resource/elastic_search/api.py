@@ -1,8 +1,9 @@
 from fastapi import APIRouter, status
 from src.resource.elastic_search.schema import Country
-from src.elastic_search.elastic_search_curd import post_data, get_all_data, delete_data, get_by_name
+from src.elastic_search.elastic_search_curd import post_data, get_all_data, delete_data, get_by_name, create_index
 
 elasticsearch_route = APIRouter()
+
 
 @elasticsearch_route.get("/", status_code=status.HTTP_200_OK)
 def welcome_api():
@@ -11,6 +12,20 @@ def welcome_api():
     """
 
     return "welcome"
+
+
+@elasticsearch_route.post("/create-index", status_code=status.HTTP_201_CREATED)
+def create_index_in_elasticsearch():
+    """
+    create index in elasticsearch
+    """
+
+    message , status_code = create_index()
+    return{
+        "message":message,
+        "status_code":status_code
+    }
+
 
 @elasticsearch_route.post("/post-data", status_code=status.HTTP_201_CREATED)
 def add_data_post(request: Country):

@@ -22,7 +22,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\":\"usa\",\n    \"bio\":\"usa jake nigger lege\"\n}",
+					"raw": "{\n    \"name\":\"texas\",\n    \"bio\":\"ganja ganja\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -99,6 +99,23 @@
 							"key": "city_name",
 							"value": "c"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create index",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/create-index",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"create-index"
 					]
 				}
 			},
