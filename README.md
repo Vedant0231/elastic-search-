@@ -15,6 +15,7 @@ In this project we setup elastic search with the help of docker compose file and
   * Elastic search
   * Python
   * FastAPI
+  * Postman
      
 
 ### How do I get set up? ###
@@ -30,6 +31,6 @@ In this project we setup elastic search with the help of docker compose file and
 
 ### What functionality did this project provide ###
 
-  *Create elastic search and kibana container from there docker image
-  *Create index with proper mapping(mapping is already created, you can update mapping from mapping.py file)
-  *Crud operation on elastic search
+  * Create elastic search and kibana container from there docker image
+  * Create index with proper mapping(mapping is already created, you can update mapping from mapping.py file)
+  * Crud operation on elastic search
