@@ -1,7 +1,6 @@
-from typing import List, Optional
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
 
-class Country(BaseModel):
+class Country(BaseModel):     #schema for get data from users
     name: str
     bio: str
 

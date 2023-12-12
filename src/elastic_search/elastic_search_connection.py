@@ -1,6 +1,5 @@
 from elasticsearch import Elasticsearch
 import requests
-from src.elastic_search.mapping import country_mapping
 
 """to check elasticsearch is up or not"""
 
@@ -11,4 +10,5 @@ if substring in response.content:
     print("Elasticsearch is up and running!")
 else:
     print("Something went wrong, ensure the cluster is up!")
-es = Elasticsearch([{'host': 'localhost', 'port': 9200, 'scheme': 'http'}])
+
+es = Elasticsearch([{"host": "localhost", "port": 9200, "scheme": "http"}])
