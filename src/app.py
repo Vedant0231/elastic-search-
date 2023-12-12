@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from src.resource.elsatic_search.api import elasticsearch_route
+from src.resource.elastic_search.api import elasticsearch_route
 
 app = FastAPI()
 origins = ["*"]

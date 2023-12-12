@@ -1,0 +1,108 @@
+{
+	"info": {
+		"_postman_id": "b9b29e30-91ac-4d6f-9f31-5419e46398b8",
+		"name": "elasticsearch",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30018616",
+		"_collection_link": "https://gold-water-174592.postman.co/workspace/Pageit~a3636293-2d17-4081-b8c4-daa6757069f9/collection/30018616-b9b29e30-91ac-4d6f-9f31-5419e46398b8?action=share&source=collection_link&creator=30018616"
+	},
+	"item": [
+		{
+			"name": "welcome",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "post_data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"usa\",\n    \"bio\":\"usa jake nigger lege\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/post-data",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"post-data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/get-all-data",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"get-all-data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete data",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/delete-data?id=3b5abf5f-af29-49b2-aaee-7c67bce6afa6",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"delete-data"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3b5abf5f-af29-49b2-aaee-7c67bce6afa6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get by name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/get-by-name?city_name=c",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"get-by-name"
+					],
+					"query": [
+						{
+							"key": "city_name",
+							"value": "c"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

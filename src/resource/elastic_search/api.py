@@ -1,6 +1,5 @@
-import logging
 from fastapi import APIRouter, status
-from src.resource.elsatic_search.schema import Country
+from src.resource.elastic_search.schema import Country
 from src.elastic_search.elastic_search_curd import post_data, get_all_data, delete_data, get_by_name
 
 elasticsearch_route = APIRouter()
