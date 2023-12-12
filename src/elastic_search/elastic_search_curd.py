@@ -34,7 +34,10 @@ def get_all_data():
                         "term": {"is_delete": True}
                     }
                 }
-            }
+            },
+            "sort": [
+                {"created_on": {"order": "desc"}}
+            ]
         })
 
         hits = result["hits"]["hits"]
