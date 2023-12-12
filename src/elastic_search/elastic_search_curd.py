@@ -95,6 +95,7 @@ def modified_data(request_data):
     Update data in Elasticsearch based on provided values in request_data
     """
     try:
+        time = datetime.now()
         result = es.search(
             index=Config.INDEX_NAME, body={"query": {"match": {"id": request_data.id}}}
         )
@@ -106,6 +107,8 @@ def modified_data(request_data):
             update_body["doc"]["country_name"] = request_data.name
         if request_data.bio is not None:
             update_body["doc"]["country_bio"] = request_data.bio
+        # update modified on time
+        update_body["doc"]["modified_on"] = time
         
         if update_body["doc"]:
             es.update(index=Config.INDEX_NAME, id=doc_id, body=update_body)
