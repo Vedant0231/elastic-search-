@@ -7,7 +7,7 @@ This README would normally document whatever steps are necessary to get your app
 
 ### What is this repository for? ###
 
-In this project we setup elastic search with the help of docker compose file and crete curd operation
+In this project we setup elastic search with the help of docker compose file and create curd operation
 
 ### Things used in this project ###
 
