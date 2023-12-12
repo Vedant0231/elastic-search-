@@ -90,6 +90,33 @@ def get_by_name(city_name):
         return str(e), 500
 
 
+def modified_data(request_data):
+    """
+    Update data in Elasticsearch based on provided values in request_data
+    """
+    try:
+        result = es.search(
+            index=Config.INDEX_NAME, body={"query": {"match": {"id": request_data.id}}}
+        )
+        doc_id = result["hits"]["hits"][0]["_id"]
+        
+        # Prepare update body based on provided values
+        update_body = {"doc": {}}
+        if request_data.name is not None:
+            update_body["doc"]["country_name"] = request_data.name
+        if request_data.bio is not None:
+            update_body["doc"]["country_bio"] = request_data.bio
+        
+        if update_body["doc"]:
+            es.update(index=Config.INDEX_NAME, id=doc_id, body=update_body)
+            return "Data updated successfully", 200
+        else:
+            return "No changes to update", 200
+
+    except Exception as e:
+        return str(e), 500
+
+
 def delete_data(id):
     """
     delete data elastic search

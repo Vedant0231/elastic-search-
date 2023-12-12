@@ -1,6 +1,12 @@
 from fastapi import APIRouter, status
-from src.resource.elastic_search.schema import Country
-from src.elastic_search.elastic_search_curd import post_data, get_all_data, delete_data, get_by_name, create_index
+from src.resource.elastic_search.schema import Country, UpdateSchema
+from src.elastic_search.elastic_search_curd import (
+    post_data, 
+    get_all_data, 
+    delete_data, 
+    get_by_name, 
+    create_index,
+    modified_data)
 
 elasticsearch_route = APIRouter()
 
@@ -65,6 +71,19 @@ def get_data_by_name(city_name:str):
         "data":data,
         "count": count, 
         "status_code":status_code   
+    }
+
+
+@elasticsearch_route.put("/update-data", status_code=status.HTTP_200_OK)
+def update_data(request:UpdateSchema):
+    """
+    update data from elastic search
+    """
+
+    message , status_code = modified_data(request)
+    return{
+        "message":message,
+        "status_code":status_code
     }
 
 

@@ -1,6 +1,9 @@
 # README #
 
 This README would normally document whatever steps are necessary to get your application up and running.
+## Postman collection is also attack with this repo, you can simply import postman collection json file ##
+
+
 
 ### What is this repository for? ###
 
@@ -25,5 +28,8 @@ In this project we setup elastic search with the help of docker compose file and
   * then hit create index api to create index (you need to give index name in .env file, example is already there in .env_example file)
   * then you can create data in elastic search and get data or delete data or search data
 
+### What functionality did this project provide ###
 
-## Postman collection is also attack with this repo, you can simply import postman collection json file ##
+  *Create elastic search and kibana container from there docker image
+  *Create index with proper mapping(mapping is already created, you can update mapping from mapping.py file)
+  *Crud operation on elastic search

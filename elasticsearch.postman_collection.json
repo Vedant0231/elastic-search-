@@ -11,7 +11,16 @@
 			"name": "welcome",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "{{server}}/",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						""
+					]
+				}
 			},
 			"response": []
 		},
@@ -87,7 +96,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{server}}/get-by-name?city_name=c",
+					"raw": "{{server}}/get-by-name?city_name=bh",
 					"host": [
 						"{{server}}"
 					],
@@ -97,7 +106,7 @@
 					"query": [
 						{
 							"key": "city_name",
-							"value": "c"
+							"value": "bh"
 						}
 					]
 				}
@@ -116,6 +125,38 @@
 					],
 					"path": [
 						"create-index"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update data",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":\"86649fe8-b190-4744-bf70-7ee2ad9f8609\",\n    \"bio\":\"India ya Bharat?\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/update-data?",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"update-data"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null
+						}
 					]
 				}
 			},
