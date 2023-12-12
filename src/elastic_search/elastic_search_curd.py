@@ -100,7 +100,7 @@ def modified_data(request_data):
             index=Config.INDEX_NAME, body={"query": {"match": {"id": request_data.id}}}
         )
         doc_id = result["hits"]["hits"][0]["_id"]
-        
+
         # Prepare update body based on provided values
         update_body = {"doc": {}}
         if request_data.name is not None:
@@ -109,7 +109,7 @@ def modified_data(request_data):
             update_body["doc"]["country_bio"] = request_data.bio
         # update modified on time
         update_body["doc"]["modified_on"] = time
-        
+
         if update_body["doc"]:
             es.update(index=Config.INDEX_NAME, id=doc_id, body=update_body)
             return "Data updated successfully", 200
