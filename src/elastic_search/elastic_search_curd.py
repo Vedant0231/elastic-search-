@@ -62,7 +62,7 @@ def get_all_data():
         return data, 200, len(data)
 
     except Exception as e:
-        return str(e), 500
+        return str(e), 500, 0
 
 
 def get_by_name(city_name):
@@ -87,7 +87,7 @@ def get_by_name(city_name):
         return data, 200, len(data)
 
     except Exception as e:
-        return str(e), 500
+        return str(e), 500, 0
 
 
 def modified_data(request_data):
