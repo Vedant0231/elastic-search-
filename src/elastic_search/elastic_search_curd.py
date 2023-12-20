@@ -1,8 +1,9 @@
+import json
 import uuid
 from datetime import datetime
 from src.config import Config
 from src.elastic_search.elastic_search_connection import es
-from src.elastic_search.mapping import country_mapping
+from src.elastic_search.mapping import mapping
 
 
 def create_index():
@@ -10,9 +11,17 @@ def create_index():
     Create index
     """
     try:
-        es.indices.create(Config.INDEX_NAME)  # create index
+        index_settings = {
+            "settings": {
+                "index.mapping.total_fields.limit": 10000,
+                "index.mapping.nested_fields.limit": 10000
+            }
+        }
+
+        es.indices.create(index=Config.INDEX_NAME, body=index_settings)  # create index
+        es.indices.put_settings(index_settings)  # Create the index with settings
         es.indices.put_mapping(
-            index=Config.INDEX_NAME, body=country_mapping
+            index=Config.INDEX_NAME, body=mapping
         )  # update index with mapping
         return "data added", 201
     except Exception as e:
@@ -26,16 +35,13 @@ def post_data(request):
     try:
         time = datetime.now()
         doc = {
-            "id": uuid.uuid4(),
-            "country_name": request.name,
-            "is_active": True,
-            "is_delete": False,
+            "city_name": request.get("city_name"),
+            "buyer_categories": request.get("buyer_categories"),
             "created_on": time,
             "modified_on": time,
-            "country_bio": request.bio,
         }
 
-        es.index(index=Config.INDEX_NAME, body=doc)
+        es.index(index=Config.INDEX_NAME,id=uuid.uuid4(), body=doc)
         es.indices.refresh(index=Config.INDEX_NAME)
 
         return "data added", 201
@@ -51,7 +57,6 @@ def get_all_data():
         result = es.search(
             index=Config.INDEX_NAME,
             body={
-                "query": {"bool": {"must_not": {"term": {"is_delete": True}}}},
                 "sort": [{"created_on": {"order": "desc"}}],
             },
         )
